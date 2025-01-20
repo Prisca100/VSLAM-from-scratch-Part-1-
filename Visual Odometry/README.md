@@ -89,15 +89,9 @@ Edges and corners are employed as features when dealing with images that have th
 
 Some of these features include SIFT, ORB, etc.
 #### SIFT FEATURES
----
-Scale Invariance
----
+##### Scale Invariance
 1. We take an image and we apply successive gaussian smoothing n times. Gaussian smoothing presents the illusion of viewing the image at different distances. The resulting image is characterized by the formula below.
-$$
-
-I_{x,y,\sigma} = G_{x,y,\sigma} * I_{x,y}
-
-$$
+$$I_{x,y,\sigma} = G_{x,y,\sigma} * I_{x,y}$$
 2. Next we perform the difference of gaussian DoG. DoG is computed by calculating the difference between successive layers of the gaussian smoothed images. It gives the illusion of performing a Normalized Laplace of Gaussian (NLoG) on the original image. However, it allows us to fully exploit the difference in scale for different sigmas. For $n$ number of images, 
 $$DoG = n-1$$
 3. Next we compare each pixel in the each DoG to 26 neighbors and select local extrema as potential features
@@ -106,8 +100,8 @@ $$DoG = n-1$$
     - 8 form current scale
 4. Then we repeat 1-3 for multiple octaves where the first octave starts with the original image, and the subsequent octaves downsample the image progressively usually by a factor of 2.
 5. Now that we have numerous keypoints from multiple scales, we pass those keypoints through refinement algorithms that discard unqualified features. Such algorithms include Hessian matrix.
----
-Orientation Invariance
+
+##### Orientation Invariance
 ---
 
 6. Now that we have the scale invariance, we need to compute the orientation.
@@ -118,8 +112,7 @@ the magnitude and the orientation of all the neighbors are then computed. Then t
 
 8. The orientation is stored and the magnitude adds up to the height of the bin. The orientation of the keypoint then becomes tallest bin angle. In some cases multiple orientations occur when the there are multiple bins that are greater than a certain threshold. 
 
----
-Description Computation
+##### Description Computation
 ---
 Now that we have the keypoints, we have to find a way to describe it such that the computer can locate it in any image. Since our features are scale and orientation invariant, we can carry out the next step easily.
 
