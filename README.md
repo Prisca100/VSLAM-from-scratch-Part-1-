@@ -8,7 +8,7 @@ The following Visual SLAM algorithm is carried out in these steps.
 
 In this part, we will focus on the first steps and explore the next step in a later part.
 
-To get started 
+To get started, navigate to the Visual Odometry subfolder.
 
 
 
